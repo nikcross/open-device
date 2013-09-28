@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="One Stone Soup Open-Device/release/remote-rs232-server.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/One Stone Soup Open-Device/Open-Device Comms/org/one/stone/soup/open/device/comms/remote-rs232-server.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="/Remote Sense/META-INF/MANIFEST.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
+        <javaElement handleIdentifier="=One Stone Soup Open Forum/Server&lt;org.one.stone.soup.xtransaction.client"/>
+        <javaElement handleIdentifier="=One Stone Soup Core/XBeans&lt;org.one.stone.soup.xbeans"/>
+        <javaElement handleIdentifier="=One Stone Soup Core/Core"/>
+        <javaElement handleIdentifier="=One Stone Soup Open Forum/Server&lt;org.one.stone.soup.xtransaction.server"/>
+        <javaElement handleIdentifier="=One Stone Soup Open Forum/Server&lt;org.one.stone.soup.xtransaction"/>
+        <javaElement handleIdentifier="=One Stone Soup Open-Device/Open-Device Comms&lt;org.one.stone.soup.open.device.comms{RemoteRS232Server.java"/>
+        <javaElement handleIdentifier="=One Stone Soup Core/Xml"/>
+        <javaElement handleIdentifier="=One Stone Soup Open-Device/Open-Device Comms&lt;org.one.stone.soup.open.device.comms{Connection.java"/>
+        <javaElement handleIdentifier="=One Stone Soup Open Forum/Server&lt;org.one.stone.soup.server.beanserver"/>
+        <javaElement handleIdentifier="=One Stone Soup Open-Device/Open-Device Comms&lt;org.one.stone.soup.open.device.comms{RS232Driver.java"/>
+        <javaElement handleIdentifier="=One Stone Soup Open Forum/Server&lt;org.one.stone.soup.server"/>
+    </selectedElements>
+</jardesc>
