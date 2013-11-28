@@ -8,7 +8,7 @@ import java.util.Map;
 import org.one.stone.soup.core.FileHelper;
 import org.one.stone.soup.core.constants.TimeConstants;
 import org.one.stone.soup.core.data.EntityTree;
-import org.one.stone.soup.core.data.EntityTree.Entity;
+import org.one.stone.soup.core.data.EntityTree.TreeEntity;
 import org.one.stone.soup.core.data.XmlHelper;
 import org.one.stone.soup.open.device.Connection;
 import org.one.stone.soup.open.device.Device;
@@ -105,7 +105,7 @@ public class SMAWebBox implements Runnable, Logger {
 	
 	public void log(double power,double energyToday,double energyTotal)
 	{
-		Entity entry = dataLog.addChild("entry");
+		TreeEntity entry = dataLog.addChild("entry");
 		entry.addChild("timestamp").setValue(""+System.currentTimeMillis());
 		entry.addChild("power").setValue(""+power);
 		entry.addChild("energyToday").setValue(""+energyToday);
@@ -138,7 +138,7 @@ public class SMAWebBox implements Runnable, Logger {
 		int entriesCount=0;
 		double energyToday = 0;
 		double energyTotal = 0;
-		for(Entity entry: log.getChildren("entry"))
+		for(TreeEntity entry: log.getChildren("entry"))
 		{
 			power += Double.parseDouble( entry.getChild("power").getValue() );
 			

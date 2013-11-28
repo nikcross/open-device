@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.one.stone.soup.core.data.EntityTree;
-import org.one.stone.soup.core.data.EntityTree.Entity;
+import org.one.stone.soup.core.data.EntityTree.TreeEntity;
 import org.one.stone.soup.open.device.Connection;
 import org.one.stone.soup.open.device.Device;
 import org.one.stone.soup.open.device.Logger;
@@ -68,8 +68,8 @@ public class MaxSonar implements Logger,Runnable {
 		clearDataLog();
 		int distance=0;
 		
-		List<Entity> entries = log.getChildren("entry");
-		for(Entity entry: entries)
+		List<TreeEntity> entries = log.getChildren("entry");
+		for(TreeEntity entry: entries)
 		{
 			distance += Integer.parseInt( entry.getChild("distance").getValue() );
 		}
@@ -145,7 +145,7 @@ public class MaxSonar implements Logger,Runnable {
 	
 	private void logData(int distance)
 	{
-		Entity entry = dataLog.addChild("entry");
+		TreeEntity entry = dataLog.addChild("entry");
 		entry.addChild("distance").setValue(""+distance);
 	}
 	public Device getParent() {

@@ -9,7 +9,7 @@ import java.util.Map;
 
 import org.one.stone.soup.core.constants.TimeConstants;
 import org.one.stone.soup.core.data.EntityTree;
-import org.one.stone.soup.core.data.EntityTree.Entity;
+import org.one.stone.soup.core.data.EntityTree.TreeEntity;
 import org.one.stone.soup.core.data.XmlHelper;
 import org.one.stone.soup.open.device.ArchiveListener;
 import org.one.stone.soup.open.device.Archivist;
@@ -84,7 +84,7 @@ public class CurrentCostPowerMonitor implements Runnable,Logger,Archivist,PowerL
 		}
 
 		private void logData(int channelA,int channelB,int channelC,double temperature) {
-			Entity entry = dataLog.addChild("entry");
+			TreeEntity entry = dataLog.addChild("entry");
 			entry.addChild("timestamp").setValue(""+System.currentTimeMillis());
 			entry.addChild("sensor").setValue(""+sensor);
 			entry.addChild("channelA").setValue(""+channelA);
@@ -121,7 +121,7 @@ public class CurrentCostPowerMonitor implements Runnable,Logger,Archivist,PowerL
 			EntityTree logIn = dataLog;
 			clearDataLog();
 			
-			List<Entity> entries = logIn.getChildren("entry");
+			List<TreeEntity> entries = logIn.getChildren("entry");
 			int watts = 0;
 			int watts2 = 0;
 			int watts3 = 0;
@@ -131,7 +131,7 @@ public class CurrentCostPowerMonitor implements Runnable,Logger,Archivist,PowerL
 			long startTimeStamp = 0;
 			long endTimeStamp = 0;
 			boolean isFirst = true;
-			for(Entity entry: entries)
+			for(TreeEntity entry: entries)
 			{
 				endTimeStamp = Long.parseLong( entry.getChild("timestamp").getValue() );
 				if(isFirst) {

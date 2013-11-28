@@ -21,9 +21,11 @@ public class OpenDeviceController {
 	}
 	
 	private Map<String,Device> devices;
+	private Map<String,Device> portDevices;
 	
 	public OpenDeviceController() {
 		devices = new HashMap<String,Device>();
+		portDevices = new HashMap<String,Device>();
 	}
 	
 	public String[] getAvailableSerialPorts() {
@@ -52,6 +54,7 @@ public class OpenDeviceController {
 		Device device = (Device) Class.forName(deviceClassName).getConstructor(Connection.class).newInstance(connection);
 		
 		devices.put(deviceAlias,device);
+		devices.put(portName,device);
 		return device;
 	}
 	
@@ -61,5 +64,13 @@ public class OpenDeviceController {
 	
 	public String[] getDevices() {
 		return devices.keySet().toArray(new String[]{});
+	}
+	
+	public Device getDeviceOnPort(String portName) {
+		return portDevices.get(portName);
+	}
+	
+	public String[] getUsedPorts() {
+		return portDevices.keySet().toArray(new String[]{});
 	}
 }
