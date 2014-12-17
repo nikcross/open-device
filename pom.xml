@@ -1,50 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>OpenDevice</groupId>
-  <artifactId>OpenDeviceCore</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
-  <name>OpenDevice</name>
-  <description>Open Device - Java Hardware Device Interfaces</description>
-  
-  <dependencies>
-    <dependency>
-    	<groupId>org.rxtx</groupId>
-    	<artifactId>rxtx</artifactId>
-    	<version>2.1.7</version>
-    </dependency>
-      <dependency>
-    <groupId>javax.media</groupId>
-    <artifactId>jmf</artifactId>
-    <version>2.1.1e</version>
-</dependency>
-                    <dependency>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>OpenDevice</groupId>
+	<artifactId>OpenDevice</artifactId>
+	<version>0.0.3</version>
+	<name>OpenDevice</name>
+	<description>Open Device - Java Hardware Device Interfaces</description>
 
-            <groupId>
-rhino
-            </groupId>
+	<dependencies>
+		<dependency>
+			<groupId>org.rxtx</groupId>
+			<artifactId>rxtx</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.media</groupId>
+			<artifactId>jmf</artifactId>
+			<version>2.1.1e</version>
+		</dependency>
+		<dependency>
+			<groupId>rhino</groupId>
+			<artifactId>js</artifactId>
+			<version>1.7R2</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+		</dependency>
+		<dependency>
+			<groupId>org.onestonesoup</groupId>
+			<artifactId>core</artifactId>
+			<version>0.0.9</version>
+		</dependency>
+	</dependencies>
 
-            <artifactId>
-js
-            </artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>TextToSpeech</module>
+		<module>SpeechToText</module>
+		<module>Midi</module>
+		<module>Display</module>
 
-            <version>
-1.7R2
-            </version>
-        </dependency>
-        <dependency>
-
-            <groupId>
-junit
-            </groupId>
-
-            <artifactId>
-junit
-            </artifactId>
-
-            <version>
-4.10
-            </version>
-        </dependency>
-  </dependencies>
-  
+	<module/>  <module>OpenDeviceCore</module>
+    <module>Renewables</module>
+    <module>RenSMART</module>
+    <module>GPS</module>
+    <module>Wet-Wired</module>
+    <module>OpenDeviceIO</module>
+    <module>WeatherStation</module>
+    <module>WebCam</module>
+  </modules>
 </project>
