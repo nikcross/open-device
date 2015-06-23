@@ -3,8 +3,8 @@ package org.onestonesoup.opendevice.comms.linux;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.one.stone.soup.core.process.ProcessWatch;
-import org.one.stone.soup.core.process.ProcessWatcher;
+import org.onestonesoup.core.process.ProcessWatch;
+import org.onestonesoup.core.process.ProcessWatcher;
 
 public class USBSerialMap implements ProcessWatcher {
 

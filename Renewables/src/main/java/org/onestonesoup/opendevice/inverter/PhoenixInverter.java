@@ -6,8 +6,8 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.one.stone.soup.core.StringHelper;
-import org.one.stone.soup.core.data.EntityTree;
+import org.onestonesoup.core.StringHelper;
+import org.onestonesoup.core.data.EntityTree;
 import org.onestonesoup.opendevice.Connection;
 import org.onestonesoup.opendevice.Device;
 import org.onestonesoup.opendevice.Logger;

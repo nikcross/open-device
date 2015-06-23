@@ -23,7 +23,7 @@ import javax.media.format.VideoFormat;
 import javax.media.protocol.CaptureDevice;
 import javax.media.util.BufferToImage;
 
-import org.one.stone.soup.core.ImageHelper;
+import org.onestonesoup.core.ImageHelper;
 
 public class WebCam implements Runnable {
 

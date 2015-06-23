@@ -6,11 +6,9 @@
 	<parent>
 		<groupId>OpenDevice</groupId>
 		<artifactId>OpenDevice</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 	</parent>
-	<groupId>OpenDevice</groupId>
 	<artifactId>WeatherStation</artifactId>
-	<version>0.0.3</version>
 	<name>WeatherStation</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -18,15 +16,30 @@
 	</properties>
 	<dependencies>
 		<dependency>
+			<groupId>org.rxtx</groupId>
+			<artifactId>rxtx</artifactId>
+			<version>2.2pre2</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>OpenDeviceCore</groupId>
+			<groupId>OpenDevice</groupId>
 			<artifactId>OpenDeviceCore</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>OpenDevice</groupId>
+			<artifactId>OpenDeviceSerialComms</artifactId>
+			<version>0.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.onestonesoup</groupId>
+			<artifactId>core</artifactId>
+			<version>0.1.1</version>
 		</dependency>
 	</dependencies>
 </project>

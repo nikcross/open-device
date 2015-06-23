@@ -39,7 +39,13 @@ public class RS232Driver implements Connection{
 	public static void main(String[] args)
 	{
 		try{
-			String[] list = RS232Driver.listAvailablePorts();
+			String[] ports = RS232Driver.listPorts();
+			if(ports.length==0){
+				System.out.println("No serial ports available");
+			}
+			for(String port: ports) {
+				System.out.println("port:"+port);
+			}
 		}
 		catch(Exception e){e.printStackTrace();}
 	}

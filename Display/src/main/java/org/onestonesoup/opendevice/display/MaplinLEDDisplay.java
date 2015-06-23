@@ -3,6 +3,9 @@ package org.onestonesoup.opendevice.display;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import org.onestonesoup.opendevice.Connection;
+import org.onestonesoup.opendevice.comms.RS232Driver;
+
 //javac -cp jssc.jar LEDBadge.java
 //java -cp jssc.jar:./ LEDBadge "TEST 1" 
 
@@ -12,9 +15,38 @@ import java.io.IOException;
 
 public class MaplinLEDDisplay {
 
-	static public int style = 0;
-	static public int speed = 0;
+	private static final String DEFAULT_ALIAS="Maplin Display Badge";
 
+	public static void main(String[] args) throws Exception {
+		
+		String[] ports = RS232Driver.listPorts();
+		for(String port: ports) {
+			System.out.println("port:"+port);
+		}
+		
+
+		System.out.println("Using port:"+args[0]);
+		RS232Driver connection = new RS232Driver(args[0],DEFAULT_ALIAS);
+		connection.setBaud(38400);
+		MaplinLEDDisplay display = new MaplinLEDDisplay(connection);
+		
+		display.displayMessage("Test Message");
+	}
+	
+	private int style = 0;
+	private int speed = 0;
+	private Connection connection;
+
+	public MaplinLEDDisplay(RS232Driver connection) {
+		this.connection = connection;
+		connection.connect();
+	}
+	
+	public void displayMessage(String message) throws Exception {
+		byte[] messageData = buildScrollingMessage(message, style, speed);
+		connection.getOutputStream().write(messageData);
+	}
+	
 	private int unsignedint(byte b) {
 		return (b < 0 ? (int) b + 256 : (int) b);
 	}
@@ -38,9 +70,8 @@ public class MaplinLEDDisplay {
 		byte[] bmessage = message.substring(0, Math.min(250, message.length()))
 				.getBytes(); // Just the 1st 250 characters will be used
 		int messageSize = bmessage.length;
-		log("Messaage : " + message);
-		log("Message size of " + message.length() + " clipped to "
-				+ messageSize);
+		//log("Messaage : " + message);
+		//log("Message size of " + message.length() + " clipped to " + messageSize);
 
 		ba.write(0x00);
 		ba.write(blockHeader);
@@ -155,7 +186,7 @@ public class MaplinLEDDisplay {
 
 		return ba.toByteArray();
 	}
-
+/*
 	static public void main(String [] args)
 	 {
 	  SerialNativeInterface sni = new SerialNativeInterface() ;
@@ -201,5 +232,5 @@ public class MaplinLEDDisplay {
 	         }
 	        
 	  
-	 }
+	 }*/
 }

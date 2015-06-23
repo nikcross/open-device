@@ -8,7 +8,6 @@
 		<artifactId>OpenDevice</artifactId>
 		<version>0.0.3</version>
 	</parent>
-	<groupId>OpenDevice</groupId>
 	<artifactId>Midi</artifactId>
 	<version>0.0.3-SNAPSHOT</version>
 	<name>Midi</name>
@@ -29,9 +28,63 @@
 			<version>2.1.1e</version>
 		</dependency>
 		<dependency>
-			<groupId>OpenDeviceCore</groupId>
+			<groupId>OpenDevice</groupId>
 			<artifactId>OpenDeviceCore</artifactId>
 			<version>0.0.3</version>
 		</dependency>
 	</dependencies>
+		<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>org.onestonesoup.opendevice.midi.SynthesizerKeyboard</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>org.onestonesoup.opendevice.midi.SynthesizerKeyboard</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

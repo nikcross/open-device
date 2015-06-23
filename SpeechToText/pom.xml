@@ -69,7 +69,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>org.one.stone.soup.open.device.speechtotext.SpeechToText</mainClass>
+							<mainClass>org.onestonesoup.opendevice.speechtotext.SpeechToText</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
@@ -88,7 +88,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>org.one.stone.soup.open.device.speechtotext.SpeechToText</mainClass>
+							<mainClass>org.onestonesoup.opendevice.speechtotext.SpeechToText</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.one.stone.soup.core.StringHelper;
-import org.one.stone.soup.core.data.BitString;
+import org.onestonesoup.core.StringHelper;
+import org.onestonesoup.core.data.BitString;
 
 /**
  *

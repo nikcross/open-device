@@ -13,71 +13,78 @@ import javax.sound.midi.Soundbank;
 
 import org.onestonesoup.opendevice.Device;
 
-public class Synthesizer implements MidiInstrument{
+public class Synthesizer implements MidiInstrument {
 	private String alias = "Synthesizer";
-	private javax.sound.midi.Synthesizer synth  = null;
+	private javax.sound.midi.Synthesizer synth = null;
 	private MidiChannel[] channels = null;
 	private Soundbank soundbank = null;
-	private Map<String,Integer> instruments = null;
+	private Map<String, Integer> instruments = null;
 	
-	public Synthesizer() throws MidiUnavailableException, InvalidMidiDataException, IOException {
+	public Synthesizer() throws MidiUnavailableException,
+			InvalidMidiDataException, IOException {
 		synth = MidiSystem.getSynthesizer();
-		
-		/*File soundbankFile = new File("src/main/java/org/one/stone/soup/open/device/midi/soundbank-deluxe.gm"); 
-		System.out.println("Loading "+soundbankFile.getAbsolutePath());
-		Soundbank soundbank = MidiSystem.getSoundbank(soundbankFile);
-		synth.loadAllInstruments(soundbank);*/
-		
+
+		/*
+		 * File soundbankFile = new File(
+		 * "src/main/java/org/one/stone/soup/open/device/midi/soundbank-deluxe.gm"
+		 * ); System.out.println("Loading "+soundbankFile.getAbsolutePath());
+		 * Soundbank soundbank = MidiSystem.getSoundbank(soundbankFile);
+		 * synth.loadAllInstruments(soundbank);
+		 */
+
 		soundbank = synth.getDefaultSoundbank();
 		populateIntrumentsList();
 		channels = synth.getChannels();
-		
+
 		System.out.println("Soundbank: " + soundbank);
 		System.out.println("Name: " + soundbank.getName());
 		System.out.println("Description: " + soundbank.getDescription());
 		System.out.println("Vendor: " + soundbank.getVendor());
 		System.out.println("Version: " + soundbank.getVersion());
-		
+
 		synth.open();
 	}
-	
+
 	public String[] listInstruments() {
-		return instruments.keySet().toArray(new String[]{});
+		return instruments.keySet().toArray(new String[] {});
 	}
-	
-	public void playNote(int channelNumber, int note, int velocity, String instrument) {
-		playNote(channelNumber, note, velocity,getInstrumentNumber(instrument) );
+
+	public void playNote(int channelNumber, int note, int velocity,
+			String instrument) {
+		playNote(channelNumber, note, velocity, getInstrumentNumber(instrument));
 	}
-	
+
 	private void populateIntrumentsList() {
 		Instrument[] instrumentList = soundbank.getInstruments();
-		instruments = new HashMap<String,Integer>();
-		for (Instrument instrument: instrumentList) {
-			instruments.put(instrument.getName(), instrument.getPatch().getProgram());
+		instruments = new HashMap<String, Integer>();
+		for (Instrument instrument : instrumentList) {
+			instruments.put(instrument.getName(), instrument.getPatch()
+					.getProgram());
 		}
 	}
-	
+
 	private int getInstrumentNumber(String instrument) {
 		Integer instrumentNumber = instruments.get(instrument);
-		if(instrumentNumber==null) {
+		if (instrumentNumber == null) {
 			instrumentNumber = 0;
 		}
 		return instrumentNumber;
 	}
 
-	public void playNote(int channelNumber, int note, int velocity, int instrument) {
-		MidiChannel	channel = channels[channelNumber];
-		
-		if(channel.getProgram()!=instrument) {
+	public void playNote(int channelNumber, int note, int velocity,
+			int instrument) {
+		MidiChannel channel = channels[channelNumber];
+
+		if (channel.getProgram() != instrument) {
 			channel.programChange(instrument);
 		}
-		
+
 		channel.noteOn(note, velocity);
 	}
-	
+
 	public void stopNote(int channelNumber, int note) {
-		MidiChannel[]	channels = synth.getChannels();
-		MidiChannel	channel = channels[channelNumber];
+		MidiChannel[] channels = synth.getChannels();
+		MidiChannel channel = channels[channelNumber];
 		channel.noteOff(note);
 	}
 
@@ -112,5 +119,31 @@ public class Synthesizer implements MidiInstrument{
 		synth.close();
 	}
 
-	public void setDebug(boolean state) {}
+	public void setDebug(boolean state) {
+	}
+
+	public class KeyboardListenerImpl implements KeyboardListener {
+		private int channel;
+		private int instrument;
+
+		@Override
+		public void keyUp(int key) {
+			stopNote(channel, key);
+		}
+
+		@Override
+		public void keyDown(int key, int velocity) {
+			playNote(channel, key, velocity, instrument);
+		}
+
+		@Override
+		public void setInstrument(int instrument) {
+			this.instrument = instrument;
+		}
+	}
+	private KeyboardListener keyboardListener = new KeyboardListenerImpl();
+	
+	public KeyboardListener getKeyboardListener() {
+		return keyboardListener;
+	}
 }

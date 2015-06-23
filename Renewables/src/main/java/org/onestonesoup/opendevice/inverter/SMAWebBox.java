@@ -5,11 +5,12 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.one.stone.soup.core.FileHelper;
-import org.one.stone.soup.core.constants.TimeConstants;
-import org.one.stone.soup.core.data.EntityTree;
-import org.one.stone.soup.core.data.EntityTree.TreeEntity;
-import org.one.stone.soup.core.data.XmlHelper;
+import org.onestonesoup.core.FileHelper;
+import org.onestonesoup.core.constants.TimeConstants;
+import org.onestonesoup.core.data.EntityTree;
+import org.onestonesoup.core.data.EntityTree.TreeEntity;
+import org.onestonesoup.core.data.XmlHelper;
+import org.onestonesoup.javascript.engine.JavascriptEngine;
 import org.onestonesoup.opendevice.Connection;
 import org.onestonesoup.opendevice.Device;
 import org.onestonesoup.opendevice.Logger;
@@ -78,7 +79,7 @@ public class SMAWebBox implements Runnable, Logger {
 			out.print( dataOut );
 			out.flush();			
 	
-			/*JavascriptEngine jsEngine = new JavascriptEngine();
+			JavascriptEngine jsEngine = new JavascriptEngine();
 			Map<String,Object> jsObjects = new HashMap<String,Object>();
 			jsObjects.put("SMAWebBox",this);
 			String dataIn = FileHelper.loadFileAsString( connection.getInputStream() );
@@ -92,7 +93,7 @@ public class SMAWebBox implements Runnable, Logger {
 			"if(data[i].meta==\"GriEgyTot\") energyTotal=parseFloat(data[i].value);" +
 			"}" +
 			"SMAWebBox.log(pwr,energyToday,energyTotal);";
-			jsEngine.runScript("SMA Log Processor",script,jsObjects);*/
+			jsEngine.evaluateJavascript("SMA Log Processor",script);
 			try{ connection.disconnect(); }catch(Exception e2){}
 		}
 		catch(Throwable e)
