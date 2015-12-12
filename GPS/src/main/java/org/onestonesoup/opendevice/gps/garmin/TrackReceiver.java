@@ -1,11 +1,11 @@
-package org.onestonesoup.opendevice.gps;
+package org.onestonesoup.opendevice.gps.garmin;
 
 /**
  * Insert the type's description here.
  * Creation date: (09/08/03 10:10:41)
  * @author: 
  */
-public class WayPointReceiver implements GarminPacketListener,Runnable{
+public class TrackReceiver implements GarminPacketListener,Runnable{
 
 	private boolean running = false;
 	
@@ -15,7 +15,7 @@ public class WayPointReceiver implements GarminPacketListener,Runnable{
 /**
  * TrackReceiver constructor comment.
  */
-public WayPointReceiver(GarminGPSController controller,GarminPacketListener listener,GarminProcessListener receiverListener) {
+public TrackReceiver(GarminGPSController controller,GarminPacketListener listener,GarminProcessListener receiverListener) {
 	super();
 
 	this.controller = controller;
@@ -33,9 +33,9 @@ public void packetResponse(GarminPacket packet)
 			packet.addListener(this);
 			controller.sendPacket( packet );
 			break;
-		case GarminPacketFactory.WPT_DATA_PID:
+		case GarminPacketFactory.TRK_DATA_PID:
 			listener.packetResponse(packet);
-			packet = GarminPacketFactory.getACKPacket(GarminPacketFactory.WPT_DATA_PID);
+			packet = GarminPacketFactory.getACKPacket(GarminPacketFactory.TRK_DATA_PID);
 			packet.addListener(this);
 			controller.sendPacket( packet );
 			break;
@@ -63,7 +63,7 @@ public void packetResponse(GarminPacket packet)
 	 */
 public void run()
 {
-	GarminPacket packet = GarminPacketFactory.getTransferWayPointsPacket();
+	GarminPacket packet = GarminPacketFactory.getTransferTracksPacket();
 	packet.addListener(this);
 	controller.sendPacket(packet);
 

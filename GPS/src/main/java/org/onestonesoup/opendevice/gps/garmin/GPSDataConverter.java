@@ -1,4 +1,4 @@
-package org.onestonesoup.opendevice.gps;
+package org.onestonesoup.opendevice.gps.garmin;
 
 public final class GPSDataConverter {
 public static String formatDegForRad(float rad) {

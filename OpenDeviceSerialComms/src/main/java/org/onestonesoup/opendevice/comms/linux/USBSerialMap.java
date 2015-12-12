@@ -2,6 +2,7 @@ package org.onestonesoup.opendevice.comms.linux;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.onestonesoup.core.process.ProcessWatch;
 import org.onestonesoup.core.process.ProcessWatcher;
@@ -104,8 +105,17 @@ public class USBSerialMap implements ProcessWatcher {
 		return ready;
 	}
 	
-	public String getPath(String port) {
+	public String getPathToPort(String port) {
 		return portMap.get(port);
+	}
+	
+	public String getPortAtPath(String path) {
+		for(Entry<String, String> testPath: portMap.entrySet()) {
+			if(testPath.getValue().equals(path)) {
+				return testPath.getKey();
+			}
+		}
+		return null;
 	}
 	
 	public String[] getPorts() {

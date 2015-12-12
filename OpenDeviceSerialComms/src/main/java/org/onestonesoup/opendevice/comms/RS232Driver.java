@@ -38,6 +38,10 @@ public class RS232Driver implements Connection{
 	
 	public static void main(String[] args)
 	{
+		if(args.length>0) {
+			String[] parts = args[0].split("=");
+			System.setProperty(parts[0],parts[1]);
+		}
 		try{
 			String[] ports = RS232Driver.listPorts();
 			if(ports.length==0){

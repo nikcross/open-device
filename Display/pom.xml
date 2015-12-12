@@ -6,10 +6,10 @@
 	<parent>
 		<groupId>OpenDevice</groupId>
 		<artifactId>OpenDevice</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 	</parent>
 	<artifactId>Display</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.4</version>
 	<name>Display</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -25,7 +25,12 @@
 		<dependency>
 			<groupId>OpenDeviceCore</groupId>
 			<artifactId>OpenDeviceCore</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>OpenDeviceSerialComms</groupId>
+			<artifactId>OpenDeviceSerialComms</artifactId>
+			<version>0.0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.rxtx</groupId>
@@ -52,38 +57,13 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>org.onestonesoup.opendevice.display.MaplinLEDDisplay</mainClass>
+							<mainClass>org.onestonesoup.opendevice.display.DisplayHelper</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
 				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4.1</version>
-				<configuration>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>org.onestonesoup.opendevice.display.MaplinLEDDisplay</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

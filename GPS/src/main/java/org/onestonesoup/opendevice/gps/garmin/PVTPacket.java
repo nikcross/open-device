@@ -1,4 +1,4 @@
-package org.onestonesoup.opendevice.gps;
+package org.onestonesoup.opendevice.gps.garmin;
 
 public class PVTPacket {
 	public static final int FIX_UNUSABLE	= 0;
