@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>OpenDevice</groupId>
 		<artifactId>OpenDevice</artifactId>
-		<version>0.0.4</version>
+		<version>0.0.5</version>
 	</parent>
 	<artifactId>OpenDeviceIO</artifactId>
 	<name>OpenDeviceIO</name>
@@ -48,6 +48,11 @@
 			<type>so</type>
 			<classifier>bin</classifier>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.pi4j</groupId>
+		    <artifactId>pi4j-core</artifactId>
+		   <version>1.0</version>
 		</dependency>
 		<!-- <dependency>
 			<groupId>com.codeminders</groupId>

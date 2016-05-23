@@ -36,6 +36,7 @@ public class CurrentCostPowerMonitor implements Runnable, Logger, Archivist,
 		connection.setBaud(57600);
 		CurrentCostPowerMonitor monitor = new CurrentCostPowerMonitor(
 				connection);
+		monitor.setDebug(true);
 
 		int count = 60;
 		while (monitor.dataAvailable() == false && count > 0) {
@@ -361,7 +362,10 @@ public class CurrentCostPowerMonitor implements Runnable, Logger, Archivist,
 	}
 
 	private void readData() throws Exception {
-		EntityTree data = XmlHelper.loadXml(connection.getInputStream(), false);
+		EntityTree data = null;
+		try{
+			data = XmlHelper.loadXml(connection.getInputStream(), false);
+		} catch (Exception e) {}
 		if (data == null) {
 			return;
 		}

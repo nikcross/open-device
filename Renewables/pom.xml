@@ -6,11 +6,9 @@
 	<parent>
 		<groupId>OpenDevice</groupId>
 		<artifactId>OpenDevice</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.5</version>
 	</parent>
-	<groupId>OpenDevice</groupId>
 	<artifactId>Renewables</artifactId>
-	<version>0.0.3</version>
 	<name>Renewables</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -18,19 +16,14 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>OpenDeviceSerialComms</groupId>
-			<artifactId>OpenDeviceSerialComms</artifactId>
-			<version>0.0.4</version>
-		</dependency>
-		<dependency>
 			<groupId>org.onestonesoup</groupId>
 			<artifactId>core</artifactId>
 			<version>0.1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.onestonesoup</groupId>
+			<groupId>onestonesoup</groupId>
 			<artifactId>javascript</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -40,8 +33,13 @@
 		</dependency>
 		<dependency>
 			<groupId>OpenDevice</groupId>
+			<artifactId>OpenDeviceSerialComms</artifactId>
+			<version>0.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>OpenDevice</groupId>
 			<artifactId>OpenDeviceCore</artifactId>
-			<version>0.0.4</version>
+			<version>0.0.5</version>
 		</dependency>
 	</dependencies>
 </project>

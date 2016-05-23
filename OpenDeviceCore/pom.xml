@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>OpenDevice</groupId>
 		<artifactId>OpenDevice</artifactId>
-		<version>0.0.4</version>
+		<version>0.0.5</version>
 	</parent>
 	<artifactId>OpenDeviceCore</artifactId>
 	<name>OpenDeviceCore</name>
